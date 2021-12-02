@@ -18,6 +18,8 @@
     return dispatch_get_main_queue();
 }
 
+BOOL authNotResolved = true;
+
 RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(init: (NSString *)consumerKey consumerSecret:(NSString *)consumerSecret resolver:(RCTPromiseResolveBlock)resolve
@@ -40,7 +42,10 @@ RCT_EXPORT_METHOD(logIn: (RCTPromiseResolveBlock)resolve
                                        @"email": requestedEmail,
                                        @"userName":session.userName};
                 
-                 resolve(body);
+                 if(authNotResolved){
+                    resolve(body);
+                    authNotResolved = false;
+                }
                 
             }];
         } else {
@@ -51,6 +56,7 @@ RCT_EXPORT_METHOD(logIn: (RCTPromiseResolveBlock)resolve
 
 RCT_EXPORT_METHOD(logOut)
 {
+    authNotResolved = true;
     TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
     NSString *userID = store.session.userID;
     [store logOutUserID:userID];
