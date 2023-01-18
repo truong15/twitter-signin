@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
   s.homepage    = package['homepage']
   s.license     = package['license']
   s.author      = 'Justin Nguyen'
-  s.platform    = :ios, "9.0"
-  s.source      = { :git => "https://github.com/Ruthvikbr/twitter-signin.git", :tag => "#{s.version}" }
+  s.platform    = :ios, "14.0"
+  s.source      = { :git => "https://github.com/truong15/twitter-signin.git", :tag => "#{s.version}" }
 
   s.source_files  = "ios/*.{h,m,mm}"
 
