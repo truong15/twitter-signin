@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
   s.source_files  = "ios/*.{h,m,mm}"
 
   s.dependency "React-Core"
-  s.dependency "TwitterKit5", "~> 5.2"
+  s.dependency "TwitterKit5", :podspec => "https://raw.githubusercontent.com/touren/twitter-kit-ios/master/TwitterKit5.podspec"
 end
